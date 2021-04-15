@@ -7,8 +7,15 @@ Resources:
         CaseSensitive: true
       AutoVerifiedAttributes:
         - email
-        - phone_number
       Schema:
+        - AttributeDataType: String
+          Name: name
+          Required: true
+          Mutable: false
+        - AttributeDataType: String
+          Name: nickname
+          Required: true
+          Mutable: false
         - AttributeDataType: String
           Name: email
           Required: true
@@ -17,6 +24,7 @@ Resources:
           Name: phone_number
           Required: true
           Mutable: false
+    
       Policies:
         PasswordPolicy:
           MinimumLength: 8
@@ -41,11 +49,15 @@ Resources:
       GenerateSecret: False
       UserPoolId: !Ref CognitoUserPoolFirmotekaUserPool
       ReadAttributes:
-        - email
         - phone_number
+        - email
+        - nickname
+        - name
       WriteAttributes:
-        - email
         - phone_number
+        - email
+        - nickname
+        - name
       ExplicitAuthFlows:
           - ALLOW_USER_SRP_AUTH
           - ALLOW_USER_PASSWORD_AUTH
