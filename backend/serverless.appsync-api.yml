@@ -1,0 +1,31 @@
+name: openUpApp
+schema: schema.graphql
+authenticationType: AMAZON_COGNITO_USER_POOLS
+userPoolConfig:
+  awsRegion: eu-west-1
+  defaultAction: ALLOW
+  userPoolId: !Ref CognitoUserPoolFirmotekaUserPool
+additionalAuthenticationProviders:
+  - authenticationType: AWS_IAM
+mappingTemplatesLocation: mapping-templates
+
+mappingTemplates:
+  - type: Query
+      field: getMyProfile
+      dataSource: usersTable
+  - type: Query
+      field: getCompany
+      dataSource: companiesTable
+
+dataSources:
+  - type: NONE
+    name: none
+  - type: AMAZON_DYNAMODB
+    name: usersTable
+    config:
+      tableName: !Ref UsersTable
+  - type: AMAZON_DYNAMODB
+    name: companiesTable
+    config:
+      tableName: !Ref CompaniesTable
+

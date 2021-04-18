@@ -1,0 +1,54 @@
+schema {
+    query: Query
+    mutation: Mutation
+    subscription: Subscription
+}
+
+type Query {
+    getMyProfile: MyProfile!   # svoj profil
+    getCompany(id: ID!): Company!
+    getAllCompanies(id: ID!, limit: Int!, nextToken: String): AllCompanies!
+}
+
+type Mutation {
+    editMyProfile(newProfile: ProfileInput!): MyProfile!  # editovanje svog profila
+}
+
+type Subscription {
+
+}
+
+interface Profile {  # objekat profil
+    id: ID!
+    full_name: String!
+    username: String!
+    email: String!
+    phone_number: String
+}
+
+type MyProfile implements Profile {
+    id: ID!
+    full_name: String!
+    username: String!
+    email: String!
+    phone_number: String
+}
+
+input ProfileInput {  # podaci koji se mogu editovati na mutaciji editMyProfile
+    id: ID!
+    full_name: String!
+    username: String!
+    email: String!
+    phone_number: String
+}
+type Company {
+    id: ID!
+    name: String!
+    industry: String!
+    description: String!
+}
+
+type AllCompanies {
+    companies: [Company!]
+    nextToken: String
+}
