@@ -35,7 +35,6 @@ functions:
       - Effect: Allow
         Action: dynamodb:PutItem
         Resource: !GetAtt UsersTable.Arn
-    events:
 
 
 resources:

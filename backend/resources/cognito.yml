@@ -13,10 +13,6 @@ Resources:
           Required: true
           Mutable: false
         - AttributeDataType: String
-          Name: nickname
-          Required: true
-          Mutable: false
-        - AttributeDataType: String
           Name: email
           Required: true
           Mutable: false
@@ -51,12 +47,10 @@ Resources:
       ReadAttributes:
         - phone_number
         - email
-        - nickname
         - name
       WriteAttributes:
         - phone_number
         - email
-        - nickname
         - name
       ExplicitAuthFlows:
         - ALLOW_USER_SRP_AUTH

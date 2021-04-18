@@ -14,9 +14,9 @@ exports.handler = async (event) => {
             numeric: true,
         });
         const username = event.userName;
-        const full_name = event.request.name;
-        const phone_number = event.request.phone_number;
-        const email = event.request.email;
+        const full_name = event.request.userAttributes.name;
+        const phone_number = event.request.userAttributes.phone_number;
+        const email = event.request.userAttributes.email;
 
         var fullDateArr = new Date().toISOString().split("T");
         const creationTime = fullDateArr[0] + " " + fullDateArr[1].split(".")[0];
