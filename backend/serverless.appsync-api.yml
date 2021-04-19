@@ -11,11 +11,11 @@ mappingTemplatesLocation: mapping-templates
 
 mappingTemplates:
   - type: Query
-      field: getMyProfile
-      dataSource: usersTable
-  - type: Query
-      field: getCompany
-      dataSource: companiesTable
+    field: getMyProfile
+    dataSource: usersTable
+#  - type: Query
+#    field: getCompany
+#    dataSource: companiesTable
 
 dataSources:
   - type: NONE
@@ -24,8 +24,8 @@ dataSources:
     name: usersTable
     config:
       tableName: !Ref UsersTable
-  - type: AMAZON_DYNAMODB
-    name: companiesTable
-    config:
-      tableName: !Ref CompaniesTable
+#  - type: AMAZON_DYNAMODB
+#    name: companiesTable
+#    config:
+#      tableName: !Ref CompaniesTable
 

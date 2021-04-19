@@ -6,8 +6,8 @@ schema {
 
 type Query {
     getMyProfile: MyProfile!   # svoj profil
-    getCompany(id: ID!): Company!
-    getAllCompanies(id: ID!, limit: Int!, nextToken: String): AllCompanies!
+#    getCompany(id: ID!): Company!
+#    getAllCompanies(id: ID!, limit: Int!, nextToken: String): AllCompanies!
 }
 
 type Mutation {

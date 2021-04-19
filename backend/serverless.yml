@@ -1,6 +1,9 @@
 # NOTE: update this with your service name
 service: firmoteka
 
+# Dont show deprecations in terminal
+disabledDeprecations: '*'
+
 # Create an optimized package for our functions
 package:
   individually: true
@@ -19,6 +22,7 @@ provider:
   runtime: nodejs12.x
   stage: dev
   region: eu-central-1
+  lambdaHashingVersion: 20201221
 
 custom:
   appSync:
