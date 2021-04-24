@@ -1,7 +1,7 @@
 schema {
     query: Query
     mutation: Mutation
-    subscription: Subscription
+    # subscription: Subscription
 }
 
 type Query {
@@ -14,9 +14,9 @@ type Mutation {
     editMyProfile(newProfile: ProfileInput!): MyProfile!  # editovanje svog profila
 }
 
-type Subscription {
+# type Subscription {
 
-}
+# }
 
 interface Profile {  # objekat profil
     id: ID!

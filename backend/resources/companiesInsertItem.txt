@@ -1,0 +1,23 @@
+  {
+    "pib": "02095106",
+    "activity_code": "1071",
+    "est_date": "11.07.2002",
+    "short_name": "NIKPEK",
+    "activity": "Proizvodnja hljeba, svežeg peciva i kolaca",
+    "status": "Registrovan",
+    "country": "Niksic",
+    "reg_num": "40000034",
+    "full_name": "NIKPEK GRADSKA PEKARA A.D. NIKŠIĆ",
+    "address": "HERCEGOVAČKI PUT BROJ 5",
+    "post_address": "81400",
+    "email": "nipek@gmail.com",
+    "phone": "+38268123123",
+    "web_address": "www.nipek.me",
+    "org_type": "AKCIONARSKO DRUŠTVO",
+    "web_address": "www.nipek.me",
+    "ceo": "RADE BOŠKOVIĆ",
+    "founder": "DRAGAN TOŠIĆ",
+    "authorized_represent": "MILISAV ĆIPRANIĆ",
+    "created_at": "2021-04-24 18.00",
+    "updated_at": "2021-04-24 18.00"
+  }
