@@ -35,8 +35,12 @@ functions:
       - Effect: Allow
         Action: dynamodb:PutItem
         Resource: !GetAtt UsersTable.Arn
+  scrapeDataFunction:
+    handler: functions/html-scraper.handler
     events:
-      
+      - http:
+          path: scrape
+          method: post
 
 resources:
   - ${file(resources/cognito.yml)}
