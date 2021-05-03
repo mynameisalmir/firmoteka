@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@appsync/serverless-plugin": "^0.3.5",
+    "algoliasearch": "^4.9.1",
     "axios": "^0.21.1",
     "bluebird": "^3.7.2",
     "chance": "^1.1.7",

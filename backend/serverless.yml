@@ -2,7 +2,7 @@
 service: firmoteka
 
 # Dont show deprecations in terminal
-disabledDeprecations: '*'
+disabledDeprecations: "*"
 
 # Create an optimized package for our functions
 package:
@@ -49,9 +49,13 @@ functions:
       - http:
           path: scrape
           method: post
-
+  syncCompaniesToAlgolia:
+    handler: functions/sync-companies-to-algolia.handler
+    events:
+      - stream:
+          type: dynamodb
+          arn: !GetAtt CompaniesTable.StreamArn
 
 resources:
   - ${file(resources/cognito.yml)}
   - ${file(resources/dynamodb.yml)}
-
