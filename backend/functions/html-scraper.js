@@ -1,3 +1,4 @@
+/* eslint no-eval: 0 */
 const DynamoDB = require("aws-sdk/clients/dynamodb");
 const DocumentClient = new DynamoDB.DocumentClient();
 const axios = require("axios");
@@ -42,7 +43,7 @@ exports.handler = async (event) => {
 };
 
 function prepareData(array) {
-  array = array.splice(0, 25)
+  array = array.splice(0, 25);
   var fullDateArr = new Date().toISOString().split("T");
   const creationTime = fullDateArr[0] + " " + fullDateArr[1].split(".")[0];
   let arrayToSend = [];
