@@ -56,3 +56,70 @@ Resources:
             ProjectionType: ALL
       BillingMode: PAY_PER_REQUEST
   
+  CompaniesTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: ${self:custom.companiesTableName}
+      AttributeDefinitions:
+        - AttributeName: pib
+          AttributeType: S
+        - AttributeName: activity_code
+          AttributeType: S
+        - AttributeName: short_name
+          AttributeType: S
+        - AttributeName: activity
+          AttributeType: S
+        - AttributeName: country
+          AttributeType: S
+        - AttributeName: est_date
+          AttributeType: S
+        - AttributeName: status
+          AttributeType: S
+      KeySchema:
+        - AttributeName: pib
+          KeyType: HASH
+        - AttributeName: activity_code
+          KeyType: RANGE
+      LocalSecondaryIndexes:
+        - IndexName: getCompanyByStatus
+          KeySchema:
+            - AttributeName: pib
+              KeyType: HASH
+            - AttributeName: status
+              KeyType: RANGE
+          Projection:
+            ProjectionType: ALL
+        - IndexName: getCompanyByActivity
+          KeySchema:
+            - AttributeName: pib
+              KeyType: HASH
+            - AttributeName: activity
+              KeyType: RANGE
+          Projection:
+            ProjectionType: ALL
+        - IndexName: getCompanyByEstDate
+          KeySchema:
+            - AttributeName: pib
+              KeyType: HASH
+            - AttributeName: est_date
+              KeyType: RANGE
+          Projection:
+            ProjectionType: ALL
+        - IndexName: getCompanyByShortName
+          KeySchema:
+            - AttributeName: pib
+              KeyType: HASH
+            - AttributeName: short_name
+              KeyType: RANGE
+          Projection:
+            ProjectionType: ALL
+        - IndexName: getCompanyByCountry
+          KeySchema:
+            - AttributeName: pib
+              KeyType: HASH
+            - AttributeName: country
+              KeyType: RANGE
+          Projection:
+            ProjectionType: ALL
+      BillingMode: PAY_PER_REQUEST
+        

@@ -13,7 +13,7 @@
     "url": "https://github.com/AnomalyInnovations/serverless-nodejs-starter.git"
   },
   "devDependencies": {
-    "aws-sdk": "^2.878.0",
+    "aws-sdk": "^2.892.0",
     "bestzip": "^2.2.0",
     "pkg-up": "^3.1.0",
     "serverless-bundle": "^3.2.1",
@@ -26,7 +26,9 @@
     "bluebird": "^3.7.2",
     "chance": "^1.1.7",
     "pip": "0.0.1",
+    "graphql": "^15.5.0",
     "pkg-up": "^3.1.0",
+    "serverless-appsync-plugin": "^1.4.0",
     "serverless-iam-roles-per-function": "^3.1.0",
     "uuid": "^7.0.3"
   }

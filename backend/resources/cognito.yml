@@ -25,6 +25,7 @@ Resources:
           Required: true
           Mutable: false
     
+
       Policies:
         PasswordPolicy:
           MinimumLength: 8
@@ -32,7 +33,7 @@ Resources:
           RequireNumbers: true
           RequireUppercase: true
       LambdaConfig:
-          PostConfirmation: !GetAtt ConfirmUserSignupLambdaFunction.Arn
+        PostConfirmation: !GetAtt ConfirmUserSignupLambdaFunction.Arn
 
   UserPoolInvokeConfirmUserSignupLambdaPermission:
     Type: AWS::Lambda::Permission
@@ -43,7 +44,7 @@ Resources:
       SourceArn: !GetAtt CognitoUserPoolFirmotekaUserPool.Arn
 
   CognitoUserPoolClient:
-    Type: "AWS::Cognito::UserPoolClient"
+    Type: AWS::Cognito::UserPoolClient
     Properties:
       ClientName: web-client
       GenerateSecret: False
@@ -59,7 +60,7 @@ Resources:
         - nickname
         - name
       ExplicitAuthFlows:
-          - ALLOW_USER_SRP_AUTH
-          - ALLOW_USER_PASSWORD_AUTH
-          - ALLOW_REFRESH_TOKEN_AUTH
+        - ALLOW_USER_SRP_AUTH
+        - ALLOW_USER_PASSWORD_AUTH
+        - ALLOW_REFRESH_TOKEN_AUTH
       PreventUserExistenceErrors: ENABLED
