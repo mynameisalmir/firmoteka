@@ -38,7 +38,7 @@ exports.handler = async (event) => {
       ConditionExpression: "attribute_not_exists(id)",
     }).promise();
   }
-  return event;
+  
     if (event.triggerSource === "PostConfirmation_ConfirmSignUp") {
         const user_id = chance.string({
             length: 8,

@@ -1,3 +1,5 @@
+const DynamoDB = require("aws-sdk/clients/dynamodb");
+const DocumentClient = new DynamoDB.DocumentClient();
 const axios = require("axios");
 const queryString = require("qs");
 
@@ -25,17 +27,58 @@ exports.handler = async (event) => {
   sliced = eval(sliced.substring(0, sliced.indexOf("]];")) + "]];");
 
   // Proslijedi dobijeni niz funkciji koja ce spremiti podatke za DynamoDB
+  let sendData = {
+    RequestItems: {
+      "dev-firmoteka-companies": prepareData(sliced),
+    },
+  };
 
+  let res = await DocumentClient.batchWrite(sendData).promise();
 
   return {
     status: 200,
-    body: JSON.stringify(sliced),
+    body: JSON.stringify(res),
   };
 };
 
 function prepareData(array) {
-  let registrationNumber = array[1];
-  let pib = array[3];
+  array = array.splice(0, 25)
+  var fullDateArr = new Date().toISOString().split("T");
+  const creationTime = fullDateArr[0] + " " + fullDateArr[1].split(".")[0];
+  let arrayToSend = [];
+
+  array.forEach((element) => {
+    let newData = {
+      PutRequest: {
+        Item: {
+          reg_num: element[1] ? element[1] : 'NULL',
+          pib: element[3] ? element[3] : 'NULL',
+          org_type: element[4] ? element[4] : 'NULL',
+          full_name: element[5] ? element[5] : 'NULL',
+          activity: element[6] ? element[6] : 'NULL',
+          activity_code: element[7] ? element[7] : 'NULL',
+          country: element[8] ? element[8] : 'NULL',
+          est_date: element[9] ? element[9] : 'NULL',
+          status: element[11] ? element[11] : 'NULL',
+          adress: "HERCEGOVACKI PUT BROJ 5",
+          authorized_represent: "MARKO MARKOVIC",
+          ceo: "JANKO JANKOVIC",
+          email: "email@example.com",
+          founder: "MIRKO MIRKOVIC",
+          phone: "+38268771111",
+          post_address: "81000",
+          short_name: element[5] ? element[5] : 'NULL',
+          web_address: "www.website.com",
+          created_at: creationTime,
+          updated_at: creationTime,
+        },
+      },
+    };
+
+    arrayToSend.push(newData);
+  });
+
+  return arrayToSend;
 }
 
 function setupAxios(request) {
